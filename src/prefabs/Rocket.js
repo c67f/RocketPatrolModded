@@ -33,6 +33,10 @@ class Rocket extends Phaser.GameObjects.Sprite {
         if (this.y <= borderUISize *3 + borderPadding) {
             this.isFiring = false
             this.y = game.config.height - borderUISize - borderPadding
+            //Mod 1: subtract time on miss
+            //console.log(game.timer)
+            game.timer -= 15000
+            //console.log(game.timer)
         }
     }
     

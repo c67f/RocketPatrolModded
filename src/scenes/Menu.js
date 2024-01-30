@@ -7,13 +7,22 @@ class Menu extends Phaser.Scene {
         //load images/tile sprites
         this.load.image('rocket', './assets/rocket.png')
         this.load.image('spaceship', './assets/spaceship.png')
+        this.load.image('fastSpaceship', './assets/fastSpaceship.png')
         this.load.image('starfield', './assets/starfield.png')
+        this.load.image('particle', './assets/particle.png')
         //load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {
             frameWidth: 64,
             frameHeight: 32,
             startFrame: 0,
-            endFrame: 20
+            endFrame: 19
+        })
+        //load small explosion spritesheet
+        this.load.spritesheet('smallExplosion', './assets/smallExplosion.png', {
+            frameWidth: 32,
+            frameHeight: 16,
+            startFrame: 0,
+            endFrame: 13
         })
         //load audio
         this.load.audio('sfx-select', './assets/sfx-select.wav')
@@ -24,10 +33,16 @@ class Menu extends Phaser.Scene {
     create() {
         //animation configuration
         this.anims.create({
-            key:'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 20, first: 0}),
-            frameRate:30
+            key: 'explode',
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 19, first: 0}),
+            frameRate: 30
         })
+        this.anims.create({
+            key: 'smallExplode',
+            frames: this.anims.generateFrameNumbers('smallExplosion', { start: 0, end: 13, first: 0}),
+            frameRate: 30
+        })
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
